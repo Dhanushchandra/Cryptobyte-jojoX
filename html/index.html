@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/chart.css" />
+    <link rel="stylesheet" href="../css/water.css" />
+    <link rel="stylesheet" href="../css/info.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>bitcoin</title>
+  </head>
+  <body style="background-color: #131722">
+    <!-- nav-start -->
+    <nav>
+      <input type="checkbox" id="check" />
+      <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+      </label>
+      <label class="logo">jojoX</label>
+      <ul>
+        <li><a class="active" href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- nav-end -->
+    <!-- main section -->
+    <section class="section-main">
+
+        <div class="div1">
+            <ul>
+              <li><a href="">Ethereum</a></li>
+              <li><a href="">Binance Coin</a></li>
+              <li><a href="">Cardano</a></li>
+              <li><a href="">Tether</a></li>
+              <li><a href="">Tezos</a></li>
+              <li><a href="">Dogecoin</a></li>
+              <li><a href="">Filecoin</a></li>
+              <li><a href="">Uniswap</a></li>
+              <li><a href="">Polygon</a></li>
+            </ul>
+        </div>
+      </div>
+
+      <div class="div2">
+        <!-- Chart -->
+        <div class="Chart">
+          <div class="chart-container">
+            <script src="https://polyfill.io/v3/polyfill.js?features=default%2Ces2015%2CElement.prototype.dataset%2CXMLHttpRequest"></script>
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+            <figure class="highcharts-figure">
+              <div id="container"></div>
+            </figure>
+
+            <script defer type="text/javascript">
+              ("use strict");
+
+              Highcharts.chart("container", {
+                chart: {
+                  type: "spline",
+                  animation: Highcharts.svg,
+                  // don't animate in old IE
+                  marginRight: 10,
+                  events: {
+                    load: function load() {
+                      // set up the updating of the chart each second
+                      var series = this.series[0];
+                      setInterval(function () {
+                        var wsUri =
+                          "wss://stream.binance.com:9443/ws/btcusdt@trade";
+                        web = new WebSocket(wsUri);
+
+                        web.onmessage = (evt) => {
+                          onMessage(evt);
+                        };
+
+                        function onMessage(evt) {
+                          object = JSON.parse(evt.data);
+                          price = object.p;
+                          return price;
+                        }
+
+                        let newPrice = parseFloat(price).toFixed(2);
+                        newPrice;
+                        let latestPrice = newPrice - newPrice / 100;
+
+                        var x = new Date().getTime(),
+                          // current time
+                          y = latestPrice;
+                        series.addPoint([x, y], true, true);
+                      }, 1000);
+                    },
+                  },
+                },
+                time: {
+                  useUTC: false,
+                },
+                title: {
+                  text: "Bitcoin",
+                },
+                accessibility: {
+                  announceNewData: {
+                    enabled: true,
+                    minAnnounceInterval: 15000,
+                    announcementFormatter: function announcementFormatter(
+                      allSeries,
+                      newSeries,
+                      newPoint
+                    ) {
+                      if (newPoint) {
+                        return "New point added. Value: " + newPoint.y;
+                      }
+
+                      return false;
+                    },
+                  },
+                },
+                xAxis: {
+                  type: "datetime",
+                  tickPixelInterval: 150,
+                },
+                yAxis: {
+                  title: {
+                    text: "Price",
+                  },
+                  plotLines: [
+                    {
+                      value: 0,
+                      width: 1,
+                      color: "#808080",
+                    },
+                  ],
+                },
+                tooltip: {
+                  headerFormat: "<b>{series.name}</b><br/>",
+                  pointFormat: "{point.x:%Y-%m-%d %H:%M:%S}<br/>{point.y:.2f}",
+                },
+                legend: {
+                  enabled: false,
+                },
+                exporting: {
+                  enabled: false,
+                },
+                series: [
+                  {
+                    name: "Bitcoin",
+                    data: (function () {
+                      // generate an array of random data
+                      var data = [],
+                        time = new Date().getTime(),
+                        i;
+
+                      for (i = -12; i <= 0; i += 1) {
+                        data.push({
+                          x: time + i * 1000,
+                          y: Math.random(),
+                        });
+                      }
+
+                      return data;
+                    })(),
+                  },
+                ],
+              });
+            </script>
+          </div>
+        </div>
+        <!-- coin data -->
+        <div class="data-info">
+          <script>
+            let ws = new WebSocket(
+              "wss://stream.binance.com:9443/ws/btcusdt@trade"
+            );
+            let lastPrice = null;
+
+            ws.onmessage = (event) => {
+              let stockObject = JSON.parse(event.data);
+              let price = parseFloat(stockObject.p).toFixed(2);
+              document.getElementById("stock-price").innerHTML =
+                parseFloat(price).toFixed(2);
+              document.getElementById("stock-price").style.color =
+                !lastPrice || lastPrice === price
+                  ? "black"
+                  : price > lastPrice
+                  ? "green"
+                  : "red";
+
+              lastPrice = price;
+            };
+            {
+              setInterval(() => {
+                let MarketCap = 68000.98;
+                if (MarketCap <= 68000.98) {
+                  let newCap = Math.floor(MarketCap - Math.random() * 66);
+                  document.getElementById("MarketCap").innerText = newCap;
+                }
+              }, 1000);
+            }
+          </script>
+
+          <div class="data-box">
+            <ul>
+              <li class="info-li" id="stock-price"></li>
+              <li class="info-li">1Y highest: $74511</li>
+              <li class="info-li">1Y lowest: $15320</li>
+              <li class="info-li">24 high: $74511</li>
+              <li class="info-li">24 low: $73521</li>
+              <li class="info-li" id="MarketCap"></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- water circles -->
+        <div class="water-container">
+          <script>
+            var wsUri = "wss://stream.binance.com:9443/ws/btcusdt@trade";
+            web = new WebSocket(wsUri);
+
+            web.onmessage = (evt) => {
+              onMessage(evt);
+            };
+
+            function onMessage(evt) {
+              object = JSON.parse(evt.data);
+              price = object.p;
+              newPrice = parseFloat((price / 68974.77) * 100).toFixed(2);
+              document.getElementById("circle").innerHTML = newPrice + "%";
+              var size = newPrice;
+              var percen = size;
+              percen = 100 - newPrice + "%";
+              document
+                .querySelector("#circle-water")
+                .style.setProperty("--top-value", percen);
+
+              if (size >= 50) {
+                document
+                  .querySelector("#circle-water")
+                  .style.setProperty(
+                    "--background-value",
+                    "rgba(83, 252, 83, 0.5)"
+                  );
+                document
+                  .querySelector("#circle-water")
+                  .style.setProperty("--border-value", "5px solid #03bc03");
+                document
+                  .querySelector("#circle-water")
+                  .style.setProperty("--shadow-value", "0 0 20px #03bc03");
+                document.getElementById("circle").style.color = "#03bc03";
+              } else {
+                document
+                  .querySelector("#circle-water")
+                  .style.setProperty(
+                    "--background-value",
+                    "rgb(212, 97, 54, 0.5)"
+                  );
+                document
+                  .querySelector("#circle-water")
+                  .style.setProperty("--border-value", "5px solid #ff4500");
+                document
+                  .querySelector("#circle-water")
+                  .style.setProperty("--shadow-value", "0 0 20px #ff4500");
+                document.getElementById("circle").style.color = "#ff4500";
+              }
+
+              // ---------------------------
+
+              // {
+              //   setInterval(() => {
+              //     let Cap = 100;
+              //     if (Cap <= 100) {
+              //       let newCap = Math.floor(
+              //         Math.random() * (Cap - 20 + 1) + 20
+              //       );
+
+              //       var num = 100 - newCap + "%";
+
+              //       document
+              //         .querySelector("#circle-water1")
+              //         .style.setProperty("--top-value", num);
+
+              //       document.querySelector(".circleText2").innerHTML = newCap;
+
+              //       console.log(newCap);
+
+              //       if (newCap >= 50) {
+              //         document
+              //           .querySelector("#circle-water1")
+              //           .style.setProperty(
+              //             "--background-value",
+              //             "rgba(83, 252, 83, 0.5)"
+              //           );
+              //         document
+              //           .querySelector("#circle-water1")
+              //           .style.setProperty(
+              //             "--border-value",
+              //             "5px solid #03bc03"
+              //           );
+              //         document
+              //           .querySelector("#circle-water1")
+              //           .style.setProperty(
+              //             "--shadow-value",
+              //             "0 0 20px #03bc03"
+              //           );
+              //         document.getElementById("circle").style.color = "#03bc03";
+              //       } else {
+              //         document
+              //           .querySelector("#circle-water1")
+              //           .style.setProperty(
+              //             "--background-value",
+              //             "rgb(212, 97, 54, 0.5)"
+              //           );
+              //         document
+              //           .querySelector("#circle-water1")
+              //           .style.setProperty(
+              //             "--border-value",
+              //             "5px solid #ff4500"
+              //           );
+              //         document
+              //           .querySelector("#circle-water1")
+              //           .style.setProperty(
+              //             "--shadow-value",
+              //             "0 0 20px #ff4500"
+              //           );
+              //         document.getElementById("circle").style.color = "#ff4500";
+              //       }
+              //     }
+              //   }, 1000);
+              // }
+
+              return price;
+            }
+          </script>
+          <h1 id="stock-price"></h1>
+          <div class="water-container">
+            <div class="watertext">
+              <div class="circle" id="circle-water">
+                <h3 class="pri">price</h3>
+                <h1 id="circle"></h1>
+              </div>
+            </div>
+            <div class="watertext">
+              <div class="circle">
+                <h3 class="vol">Volume</h3>
+                <h1 id="circle" class="circleText2">72%</h1>
+              </div>
+            </div>
+            <div class="watertext">
+              <div class="circle" id="circle-water1">
+                <h3 class="mar">Market</h3>
+                <h1 id="circle">48%</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- footer -->
+    <footer>
+      <p>Copyright &copy; JoJoX.com</p>
+    </footer>
+  </body>
+</html>

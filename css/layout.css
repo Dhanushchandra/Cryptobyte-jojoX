@@ -1,0 +1,59 @@
+.section-main {
+  display: flex;
+  margin-top: 20px;
+  background-color: #1e222d;
+  height: 800px;
+}
+
+.div1 {
+  background-color: #131722;
+  height: 90%;
+  width: 15%;
+  margin-top: 30px;
+  margin-left: 3.5%;
+}
+
+.div2 {
+  position: relative;
+  top: 30px;
+  right: 30px;
+  width: 75%;
+  height: 90%;
+  background-color: #131722;
+}
+
+.data-info {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 25%;
+  height: 40.5%;
+  background-color: #1e222d;
+}
+
+.water-container {
+  position: absolute;
+  margin-left: 26.5%;
+  height: 40.5%;
+  width: 73%;
+  margin-top: 10px;
+  background-color: #1e222d;
+}
+
+.div1 ul li {
+  text-align: center;
+  font-size: 22px;
+  margin-top: 40px;
+  border-top: 1px solid bisque;
+  border-bottom: 1px solid rgba(0, 128, 0, 0.5);
+  padding: 5px;
+}
+
+.div1 ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.div1 ul li:hover {
+  background-color: #1e222d;
+}
