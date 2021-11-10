@@ -1,20 +1,23 @@
 .section-main {
   display: flex;
+  flex-direction: row;
   margin-top: 20px;
   background-color: #1e222d;
   height: 800px;
 }
 
 .div1 {
+  position: relative;
   background-color: #131722;
   height: 90%;
-  width: 15%;
-  margin-top: 30px;
-  margin-left: 3.5%;
+  width: 20%;
+  top: 30px;
+  left: 30px;
 }
 
 .div2 {
   position: relative;
+  left: 60px;
   top: 30px;
   right: 30px;
   width: 75%;
@@ -56,4 +59,35 @@
 
 .div1 ul li:hover {
   background-color: #1e222d;
+}
+
+@media screen and (max-width: 1231px) {
+  .section-main {
+    height: 1000px;
+    flex-direction: column;
+  }
+  .div1 {
+    width: 100%;
+    height: 600px;
+    left: 0;
+  }
+  .div2 {
+    width: 100%;
+    left: 0;
+  }
+  .div1 ul li {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 811px) {
+  .water-container {
+    background-color: transparent;
+  }
+}
+
+@media screen and (max-width: 458px) {
+  .water-container {
+    height: 300px;
+  }
 }

@@ -1,5 +1,6 @@
 .water-container {
   display: flex;
+  flex-direction: row;
   justify-content: end;
   position: relative;
 }
@@ -199,5 +200,81 @@
   .watertext h3 {
     position: relative;
     font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 915px) {
+  .water-container {
+    flex-direction: column;
+    height: 600px;
+  }
+  #circle-water {
+    top: 4px;
+    height: 200px;
+    width: 200px;
+    left: 10%;
+  }
+  #circle-water1 {
+    top: 4px;
+    height: 200px;
+    width: 200px;
+    left: 10%;
+  }
+  .circle {
+    top: 4px;
+    height: 200px;
+    width: 200px;
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 459px) {
+  .water-container {
+    flex-direction: column;
+    height: 370px;
+    width: 200px;
+    margin-left: 120px;
+  }
+  #circle-water {
+    height: 120px;
+    width: 120px;
+    left: 10%;
+  }
+  #circle-water1 {
+    height: 120px;
+    width: 120px;
+    left: 10%;
+  }
+  .circle {
+    height: 120px;
+    width: 120px;
+    left: 10%;
+  }
+}
+
+@media screen and (max-width: 1231px) {
+  .water-container {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 916px) {
+  .water-container {
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 457px) {
+  .water-container {
+    height: 350px;
+    width: 30px;
+    margin-right: 100px;
+  }
+  .watertext h3 {
+    right: 70px;
+    font-size: 18px;
+  }
+  #circle {
+    font-size: 37px;
   }
 }

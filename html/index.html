@@ -15,7 +15,7 @@
   </head>
   <body style="background-color: #131722">
     <!-- nav-start -->
-    <nav>
+    <nav class="nav-list">
       <input type="checkbox" id="check" />
       <label for="check" class="checkbtn">
         <i class="fas fa-bars"></i>
@@ -31,20 +31,18 @@
     <!-- nav-end -->
     <!-- main section -->
     <section class="section-main">
-
-        <div class="div1">
-            <ul>
-              <li><a href="">Ethereum</a></li>
-              <li><a href="">Binance Coin</a></li>
-              <li><a href="">Cardano</a></li>
-              <li><a href="">Tether</a></li>
-              <li><a href="">Tezos</a></li>
-              <li><a href="">Dogecoin</a></li>
-              <li><a href="">Filecoin</a></li>
-              <li><a href="">Uniswap</a></li>
-              <li><a href="">Polygon</a></li>
-            </ul>
-        </div>
+      <div class="div1">
+        <ul>
+          <li><a href="">Bitcoin</a></li>
+          <li><a href="">Ethereum</a></li>
+          <li><a href="">Cardano</a></li>
+          <li><a href="">Tether</a></li>
+          <li><a href="">Tezos</a></li>
+          <li><a href="">Dogecoin</a></li>
+          <li><a href="">Filecoin</a></li>
+          <li><a href="">Uniswap</a></li>
+          <li><a href="">Polygon</a></li>
+        </ul>
       </div>
 
       <div class="div2">
@@ -233,7 +231,7 @@
               object = JSON.parse(evt.data);
               price = object.p;
               newPrice = parseFloat((price / 68974.77) * 100).toFixed(2);
-              document.getElementById("circle").innerHTML = newPrice + "%";
+              document.getElementById("circle").innerHTML = newPrice;
               var size = newPrice;
               var percen = size;
               percen = 100 - newPrice + "%";
