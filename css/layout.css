@@ -53,11 +53,16 @@
 }
 
 .div1 ul li a {
+  padding: 0 30% 0 30%;
   color: white;
   text-decoration: none;
 }
 
 .div1 ul li:hover {
+  background-color: #1e222d;
+}
+
+.div1 ul li a:visited {
   background-color: #1e222d;
 }
 
