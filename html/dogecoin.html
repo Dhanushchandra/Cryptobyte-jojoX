@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/info.css" />
     <link rel="stylesheet" href="../css/footer.css" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <title>bitcoin</title>
+    <title>dogecoin</title>
   </head>
   <body style="background-color: #131722">
     <!-- nav-start -->
@@ -33,12 +33,12 @@
     <section class="section-main">
       <div class="div1">
         <ul>
-          <li><a href="#">Bitcoin</a></li>
-          <li><a href="./ethereum.html">Ethereum</a></li>
-          <li><a href="./Solana.html">Solana</a></li>
-          <li><a href="./PancakeSwap.html">PancakeSwap</a></li>
-          <li><a href="./tezos.html">Tezos</a></li>
-          <li><a href="./dogecoin.html">Dogecoin</a></li>
+          <li><a href="">Bitcoin</a></li>
+          <li><a href="">Ethereum</a></li>
+          <li><a href="">Solana</a></li>
+          <li><a href="">PancakeSwap</a></li>
+          <li><a href="">Tezos</a></li>
+          <li><a href="">Dogecoin</a></li>
           <li><a href="">Filecoin</a></li>
           <li><a href="">Uniswap</a></li>
           <li><a href="">Polygon</a></li>
@@ -74,7 +74,7 @@
                       var series = this.series[0];
                       setInterval(function () {
                         var wsUri =
-                          "wss://stream.binance.com:9443/ws/btcusdt@trade";
+                          "wss://stream.binance.com:9443/ws/dogeusdt@trade";
                         web = new WebSocket(wsUri);
 
                         web.onmessage = (evt) => {
@@ -103,7 +103,7 @@
                   useUTC: false,
                 },
                 title: {
-                  text: "Bitcoin",
+                  text: "Dogecoin",
                 },
                 accessibility: {
                   announceNewData: {
@@ -176,7 +176,7 @@
         <div class="data-info">
           <script>
             let ws = new WebSocket(
-              "wss://stream.binance.com:9443/ws/btcusdt@trade"
+              "wss://stream.binance.com:9443/ws/dogeusdt@trade"
             );
             let lastPrice = null;
 
@@ -196,8 +196,8 @@
             };
             {
               setInterval(() => {
-                let MarketCap = 68000.98;
-                if (MarketCap <= 68000.98) {
+                let MarketCap = 0.75;
+                if (MarketCap <= 0.75) {
                   let newCap = Math.floor(MarketCap - Math.random() * 66);
                   document.getElementById("MarketCap").innerText = newCap;
                 }
@@ -208,10 +208,10 @@
           <div class="data-box">
             <ul>
               <li class="info-li" id="stock-price"></li>
-              <li class="info-li">1Y highest: $74511</li>
-              <li class="info-li">1Y lowest: $15320</li>
-              <li class="info-li">24 high: $74511</li>
-              <li class="info-li">24 low: $73521</li>
+              <li class="info-li">1Y highest: $0.75</li>
+              <li class="info-li">1Y lowest: $0</li>
+              <li class="info-li">24 high: $0.27</li>
+              <li class="info-li">24 low: $0.26</li>
               <li class="info-li" id="MarketCap"></li>
             </ul>
           </div>
@@ -220,7 +220,7 @@
         <!-- water circles -->
         <div class="water-container">
           <script>
-            var wsUri = "wss://stream.binance.com:9443/ws/btcusdt@trade";
+            var wsUri = "wss://stream.binance.com:9443/ws/dogeusdt@trade";
             web = new WebSocket(wsUri);
 
             web.onmessage = (evt) => {
@@ -230,7 +230,7 @@
             function onMessage(evt) {
               object = JSON.parse(evt.data);
               price = object.p;
-              newPrice = parseFloat((price / 68974.77) * 100).toFixed(2);
+              newPrice = parseFloat((price / 0.75) * 100).toFixed(2);
               document.getElementById("circle").innerHTML = newPrice;
               var size = newPrice;
               var percen = size;
@@ -268,71 +268,6 @@
                   .style.setProperty("--shadow-value", "0 0 20px #ff4500");
                 document.getElementById("circle").style.color = "#ff4500";
               }
-
-              // ---------------------------
-
-              // {
-              //   setInterval(() => {
-              //     let Cap = 100;
-              //     if (Cap <= 100) {
-              //       let newCap = Math.floor(
-              //         Math.random() * (Cap - 20 + 1) + 20
-              //       );
-
-              //       var num = 100 - newCap + "%";
-
-              //       document
-              //         .querySelector("#circle-water1")
-              //         .style.setProperty("--top-value", num);
-
-              //       document.querySelector(".circleText2").innerHTML = newCap;
-
-              //       console.log(newCap);
-
-              //       if (newCap >= 50) {
-              //         document
-              //           .querySelector("#circle-water1")
-              //           .style.setProperty(
-              //             "--background-value",
-              //             "rgba(83, 252, 83, 0.5)"
-              //           );
-              //         document
-              //           .querySelector("#circle-water1")
-              //           .style.setProperty(
-              //             "--border-value",
-              //             "5px solid #03bc03"
-              //           );
-              //         document
-              //           .querySelector("#circle-water1")
-              //           .style.setProperty(
-              //             "--shadow-value",
-              //             "0 0 20px #03bc03"
-              //           );
-              //         document.getElementById("circle").style.color = "#03bc03";
-              //       } else {
-              //         document
-              //           .querySelector("#circle-water1")
-              //           .style.setProperty(
-              //             "--background-value",
-              //             "rgb(212, 97, 54, 0.5)"
-              //           );
-              //         document
-              //           .querySelector("#circle-water1")
-              //           .style.setProperty(
-              //             "--border-value",
-              //             "5px solid #ff4500"
-              //           );
-              //         document
-              //           .querySelector("#circle-water1")
-              //           .style.setProperty(
-              //             "--shadow-value",
-              //             "0 0 20px #ff4500"
-              //           );
-              //         document.getElementById("circle").style.color = "#ff4500";
-              //       }
-              //     }
-              //   }, 1000);
-              // }
 
               return price;
             }
