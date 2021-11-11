@@ -33,10 +33,10 @@
     <section class="section-main">
       <div class="div1">
         <ul>
-          <li><a href="#">Bitcoin</a></li>
+          <li><a href="./index.html">Bitcoin</a></li>
           <li><a href="./ethereum.html">Ethereum</a></li>
-          <li><a href="./Solana.html">Solana</a></li>
-          <li><a href="./PancakeSwap.html">PancakeSwap</a></li>
+          <li><a href="">Solana</a></li>
+          <li><a href="">PancakeSwap</a></li>
           <li><a href="">Tezos</a></li>
           <li><a href="">Dogecoin</a></li>
           <li><a href="">Filecoin</a></li>
@@ -74,7 +74,7 @@
                       var series = this.series[0];
                       setInterval(function () {
                         var wsUri =
-                          "wss://stream.binance.com:9443/ws/btcusdt@trade";
+                          "wss://stream.binance.com:9443/ws/solusdt@trade";
                         web = new WebSocket(wsUri);
 
                         web.onmessage = (evt) => {
@@ -103,7 +103,7 @@
                   useUTC: false,
                 },
                 title: {
-                  text: "Bitcoin",
+                  text: "Solana",
                 },
                 accessibility: {
                   announceNewData: {
@@ -176,7 +176,7 @@
         <div class="data-info">
           <script>
             let ws = new WebSocket(
-              "wss://stream.binance.com:9443/ws/btcusdt@trade"
+              "wss://stream.binance.com:9443/ws/solusdt@trade"
             );
             let lastPrice = null;
 
@@ -196,8 +196,8 @@
             };
             {
               setInterval(() => {
-                let MarketCap = 68000.98;
-                if (MarketCap <= 68000.98) {
+                let MarketCap = 281.68;
+                if (MarketCap <= 281.68) {
                   let newCap = Math.floor(MarketCap - Math.random() * 66);
                   document.getElementById("MarketCap").innerText = newCap;
                 }
@@ -208,10 +208,10 @@
           <div class="data-box">
             <ul>
               <li class="info-li" id="stock-price"></li>
-              <li class="info-li">1Y highest: $74511</li>
-              <li class="info-li">1Y lowest: $15320</li>
-              <li class="info-li">24 high: $74511</li>
-              <li class="info-li">24 low: $73521</li>
+              <li class="info-li">1Y highest: $281</li>
+              <li class="info-li">1Y lowest: $1.14</li>
+              <li class="info-li">24 high: $274</li>
+              <li class="info-li">24 low: $260</li>
               <li class="info-li" id="MarketCap"></li>
             </ul>
           </div>
@@ -220,7 +220,7 @@
         <!-- water circles -->
         <div class="water-container">
           <script>
-            var wsUri = "wss://stream.binance.com:9443/ws/btcusdt@trade";
+            var wsUri = "wss://stream.binance.com:9443/ws/solusdt@trade";
             web = new WebSocket(wsUri);
 
             web.onmessage = (evt) => {
@@ -230,7 +230,7 @@
             function onMessage(evt) {
               object = JSON.parse(evt.data);
               price = object.p;
-              newPrice = parseFloat((price / 68974.77) * 100).toFixed(2);
+              newPrice = parseFloat((price / 290.5) * 100).toFixed(2);
               document.getElementById("circle").innerHTML = newPrice;
               var size = newPrice;
               var percen = size;
