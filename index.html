@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <title>PHP login system</title>
+    <link rel="stylesheet" href="./login.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div id="frm">
+      <h1>Login/Signup</h1>
+      <form
+        class="frm-sub"
+        name="f1"
+        action="authentication.php"
+        onsubmit="return validation()"
+        method="POST"
+      >
+        <p>
+          <input type="text" id="user" name="user" placeholder="Username" />
+        </p>
+        <p>
+          <input type="password" id="pass" name="pass" placeholder="Password" />
+        </p>
+        <p>
+          <input type="submit" id="btn" value="Login" />
+        </p>
+      </form>
+    </div>
+    <script>
+      function validation() {
+        var id = document.f1.user.value;
+        var ps = document.f1.pass.value;
+        if (id.length == "" && ps.length == "") {
+          alert("User Name and Password fields are empty");
+          return false;
+        } else {
+          if (id.length == "") {
+            alert("User Name is empty");
+            return false;
+          }
+          if (ps.length == "") {
+            alert("Password field is empty");
+            return false;
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #010409;
+      }
+
+      #frm {
+        width: 900px;
+        text-align: center;
+        margin: auto;
+      }
+
+      #frm h1 {
+        top: 300px;
+        position: relative;
+        color: #fff;
+      }
+
+      .frm-sub {
+        margin-top: 35%;
+      }
+
+      .frm-sub input {
+        margin-top: 10px;
+        font-size: 25px;
+        border-radius: 50px;
+        padding: 6px 10px;
+        text-align: center;
+        border-color: transparent;
+      }
+
+      #btn {
+        border-radius: 7px;
+        font-size: 15px;
+        padding: 5px 20px;
+        background-color: greenyellow;
+        border-color: transparent;
+      }
+
+      #btn:hover {
+        background-color: green;
+      }
+
+      @media screen and (max-width: 1003px) {
+        #frm {
+          margin-top: 10%;
+        }
+        .frm-sub input {
+          font-size: 35px;
+        }
+      }
+
+      @media (max-width: 1000px) {
+        .frm-sub {
+          margin-top: 50%;
+        }
+        #btn {
+          font-size: 45px;
+        }
+        .frm-sub input {
+          margin-top: 20px;
+          font-size: 45px;
+        }
+        #frm h1 {
+          font-size: 100px;
+          top: 400px;
+          position: relative;
+          color: #fff;
+        }
+      }
+    </style>
+  </body>
+</html>
