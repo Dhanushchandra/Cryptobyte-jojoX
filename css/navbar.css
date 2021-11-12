@@ -88,7 +88,7 @@ a:hover {
     margin: 50px 0;
     line-height: 30px;
   }
-  .nav-list ul li a {
+  nav ul li a {
     font-size: 20px;
   }
   .nav-list a:hover,
